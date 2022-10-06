@@ -162,17 +162,17 @@ def get_address_from_public_key_api(public_key: str):
         logger.exception(e)
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/generate-wallet-address", tags=[query_tag], include_in_schema=False)
+@router.get("/generate-wallet-address", tags=[query_tag])
 def generate_wallet_address_api():
     return generate_wallet_address()
 
 # v2 APIs - JSON only
 
-@router.get("/generate-contract-address", tags=[query_tag], include_in_schema=False)
+@router.get("/generate-contract-address", tags=[query_tag])
 def generate_contract_address_api():
     return create_contract_address()
 
-@router.post("/add-wallet", tags=[query_tag], include_in_schema=False)
+@router.post("/add-wallet", tags=[query_tag])
 def add_wallet_api(req: AddWalletRequest):
     """Get a transaction file for adding an existing wallet to chain"""
     try:
@@ -184,7 +184,7 @@ def add_wallet_api(req: AddWalletRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/add-token", tags=[query_tag], include_in_schema=False)
+@router.post("/add-token", tags=[query_tag])
 def add_token(
     request: CreateTokenRequest
 ):
@@ -208,7 +208,7 @@ def add_token(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/add-transfer", tags=[query_tag], include_in_schema=False)
+@router.post("/add-transfer", tags=[query_tag])
 def add_transfer(transfer_request: TransferRequest):
     """Used to create a transfer file which can be signed and executed by /sign and /transfer respectively"""
     transfer_type = transfer_request.transfer_type
@@ -250,7 +250,7 @@ def add_transfer(transfer_request: TransferRequest):
 #    with open("transfernew.json") as f:
 #        return json.load(f)
 
-@router.post("/add-sc", tags=[query_tag], include_in_schema=False)
+@router.post("/add-sc", tags=[query_tag])
 def add_sc(sc_request: CreateSCRequest):
     """Used to create a sc object which can be used to set up and deploy a smart contract"""
     scdata = {
@@ -296,7 +296,7 @@ def add_sc(sc_request: CreateSCRequest):
     tdatanew = newsc.transactioncreator(fulltrandata)
     return tdatanew
 
-@router.post("/call-sc", tags=[query_tag], include_in_schema=False)
+@router.post("/call-sc", tags=[query_tag])
 def call_sc(sc_request: CallSC):
     """Used to create a sc object which can be used to set up and deploy a smart contract"""
 
@@ -327,7 +327,7 @@ def call_sc(sc_request: CallSC):
     tdatanew = newtx.transactioncreator(fulltrandata)
     return tdatanew
 
-@router.post("/update-trustscore", tags=[query_tag], include_in_schema=False)
+@router.post("/update-trustscore", tags=[query_tag])
 def update_trustscore_wallet(ts_request: TrustScoreUpdateRequest):
     """Used to update trust score of person1 for person 2 """
 
