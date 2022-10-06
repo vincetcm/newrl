@@ -357,7 +357,7 @@ def update_trustscore_wallet(ts_request: TrustScoreUpdateRequest):
     tdatanew = newtx.transactioncreator(fulltrandata)
     return tdatanew
 
-@router.post("/sign-transaction", tags=[query_tag], include_in_schema=False)
+@router.post("/sign-transaction", tags=[query_tag])
 def sign_transaction(wallet_data: dict, transaction_data: dict):
     """Custodian wallet file can be used to sign a transaction"""
     # transactionfile_path = save_file_and_get_path(transactionfile)
