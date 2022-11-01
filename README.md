@@ -14,13 +14,16 @@
 
 ```bash
 git clone https://github.com/newrlfoundation/newrl.git
+cd newrl
 scripts/install.sh
 ```
 
 ## Start the node
 ```bash
 screen -S newrl
+cd newrl
 scripts/start.sh
+#CTRL+A+D (exit)
 ```
 Screen session is used to let the node run in background when terminal is closed. 
 
